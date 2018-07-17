@@ -15,10 +15,11 @@ module Checkable
   end
 
   def regular_frame?(throwing, next_throwing)
-    !foul?(throwing) && (throwing.to_i + next_throwing.to_i) < 10
+    throwings_sum = throwing.to_i + next_throwing.to_i
+    !foul?(throwing) && throwings_sum < 10 && throwings_sum > 0
   end
 
   def last_frame?(frame)
-    frame == 9
+    frame == 9 # since count begins in 0 last frame would be 9
   end
 end

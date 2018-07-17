@@ -2,6 +2,6 @@ es:
   errors:
     no_negative_values: 'Invalid value detected: No negative values accepted for knock over pins count'
     should_not_be_major_than_10: 'Invalid value detected: Knock over pins count per frame should not be major than 10'
-    invalid_char: "Invalid character %{score}: The only non-numeric allowed value is F (case-sensitive)"
+    invalid_char: "Invalid score %{score}: Only Integer numbers or literal \'F\' (indicating a foul) are allowed values (case sensitive)"
     game_incomplete: "Invalid game: one of the players has not completed all game frames"
     player_game_incomplete: "Invalid game: Player %{player} has not completed all game frames"

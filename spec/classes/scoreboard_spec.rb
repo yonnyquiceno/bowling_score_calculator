@@ -47,7 +47,7 @@ describe ScoreBoard do
           ScoreBoard.new(invalid_game_3).game_score
         end
         expect(printed).to include(
-          'Invalid character e: The only non-numeric allowed value is F (case-sensitive)'
+          'Invalid score e: Only Integer numbers or literal \'F\' (indicating a foul) are allowed values (case sensitive)'
         )
       end
       it 'should print errors to stdout' do
@@ -71,7 +71,7 @@ describe ScoreBoard do
           ScoreBoard.new(all_invalid_game).game_score
         end
         expect(printed).to include(
-          'Invalid character Y: The only non-numeric allowed value is F (case-sensitive)'
+          'Invalid score Y: Only Integer numbers or literal \'F\' (indicating a foul) are allowed values (case sensitive)'
         )
         expect(printed).to include(
           'Invalid game: Player Frank has not completed all game frames'
@@ -86,6 +86,18 @@ describe ScoreBoard do
     end
   end
 
+  describe '#calculate_results' do
+    it 'returns a hash with player names as keys and player pinfalls and scores as values' do
+      separated_throwings = scoreboard.send(:throwings_by_player)
+      game_results = scoreboard.send(:calculate_results, separated_throwings)
+      expect(game_results.keys).to match_array(%w(John Jeff))
+      expect(game_results['John'][:pinfalls].map(&:to_s)).to eq(%w(3 / 6 3 \  X 8 1 \  X \  X 9 0 7 / 4 4 X 9 0))
+      expect(game_results['John'][:scores]).to eq([16, 25, 44, 53, 82, 101, 110, 124, 132, 151])
+      expect(game_results['Jeff'][:pinfalls].map(&:to_s)).to eq(%w(\  X 7 / 9 0 \  X 0 8 8 / F 6 \  X \  X X 8 1))
+      expect(game_results['Jeff'][:scores]).to eq([20, 39, 48, 66, 74, 84, 90, 120, 148, 167])
+    end
+  end
+
   describe '#throwings_by_player' do
     it 'separates each player throwings' do
       separated_throwings = scoreboard.send(:throwings_by_player)
@@ -94,6 +106,7 @@ describe ScoreBoard do
       expect(separated_throwings['Jeff']).to match_array(%w(10 7 3 9 0 10 0 8 8 2 F 6 10 10 10 8 1))
     end
   end
+
   describe '#player_scoreboard' do
     it 'returns an array with overall player\'s pinfalls on first position and scores on second' do
       pinfalls, scores = scoreboard.send(:player_scoreboard, player_throwings)
