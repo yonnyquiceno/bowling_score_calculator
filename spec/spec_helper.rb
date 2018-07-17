@@ -1,10 +1,10 @@
 require_relative '../modules/validatable'
 require_relative '../modules/checkable'
-require_relative '../modules/calculable'
 require_relative '../modules/printable'
 require_relative '../classes/scoreboard'
 require 'byebug'
 require 'i18n'
+require_relative '../config/i18n'
 I18n.config.available_locales = :es
 I18n.locale = :es
 I18n.load_path = ['config/locales/es.yml']
