@@ -9,7 +9,7 @@ These instructions will get the project up and running on your local machine
 ### Prerequisites
 
 ```
-Ruby 2.3.0 (it should work just fine with higher versions)
+Ruby 2.3.6 (it should work just fine with higher versions)
 ```
 
 ### Installing
