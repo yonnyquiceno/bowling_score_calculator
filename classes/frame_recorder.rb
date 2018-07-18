@@ -68,6 +68,7 @@ class FrameRecorder
   end
 
   def score_cumsum
+    @score_keeper[-1] = @score_keeper[-1].to_i
     @score_keeper[-1] += @score_keeper[-2].to_i
   end
 
