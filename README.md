@@ -74,6 +74,10 @@ You should see this output representing the final game scoreboard:
 "Pinfalls  3    /    6    3         X    8    1         X         X    9    0    7    /    4    4    X    9    0    "
 "Score     16        25        44        53        82        101       110       124       132       151       "
 ```
+
+
+You can always run `ruby bowling_scores.rb -h` to see the available options
+
 ## Running the tests
 
 The application uses Rspec for testing, in order to run the test suite you just need to run
@@ -92,4 +96,4 @@ $ Rubocop
 
 ## Author
 
-* **Alexander Quiceno** - [github](https://github.com/yonnyquiceno)
+**Alexander Quiceno** - [github](https://github.com/yonnyquiceno)
