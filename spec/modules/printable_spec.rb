@@ -30,8 +30,8 @@ describe Printable do
       expect(printed).to include(
         'Jeff',
         'John',
-        'Score     20        39        ',
-        'Pinfalls       X    7    /    9    0         X    0'
+        'Score   20      39      ',
+        'Pinfalls    X   7   /   9   0       X   0'
       )
     end
   end
@@ -48,8 +48,8 @@ describe Printable do
 
   describe '#format_output_line' do
     it 'formats the output line before sending it to STDOUT' do
-      expect(dummy_class.send(:format_output_line, 5, 'First Col', values))
-        .to eq('First Col 3    7    6    F    10   ')
+      expect(dummy_class.send(:format_output_line, 5, 'FCol', values))
+        .to eq('FCol    3    7    6    F    10   ')
     end
   end
 end

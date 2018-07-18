@@ -5,11 +5,11 @@ module Printable
   private
 
   def print_results(scoreboards)
-    p format_output_line(10, 'Frame', (1..10).to_a)
+    p format_output_line(8, 'Frame', (1..10).to_a)
     scoreboards.each do |player, scoreboard|
       p player
-      p format_output_line(5, 'Pinfalls', scoreboard[:pinfalls])
-      p format_output_line(10, 'Score', scoreboard[:scores])
+      p format_output_line(4, 'Pinfalls', scoreboard[:pinfalls])
+      p format_output_line(8, 'Score', scoreboard[:scores])
     end
   end
 
@@ -20,6 +20,6 @@ module Printable
   end
 
   def format_output_line(space_quantity, first_col, array)
-    array.inject(first_col.ljust(10)) { |formatted_line, value| formatted_line + value.to_s.ljust(space_quantity) }
+    array.inject(first_col.ljust(8)) { |formatted_line, value| formatted_line + value.to_s.ljust(space_quantity) }
   end
 end
