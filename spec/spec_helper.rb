@@ -1,9 +1,9 @@
 require_relative '../modules/validatable'
 require_relative '../modules/checkable'
 require_relative '../modules/printable'
-require_relative '../modules/scoreboard_utilities'
 require_relative '../classes/file_reader'
 require_relative '../classes/scoreboard'
+require_relative '../classes/frame_recorder'
 require 'byebug'
 require 'i18n'
 require_relative '../config/i18n'
@@ -17,6 +17,6 @@ ensure
   $stdout = old
 end
 
-# RSpec.configure do |c|
-#   c.before { allow($stdout).to receive(:write) } # silencing stdout to avoid noise in the specs results
-# end
+RSpec.configure do |c|
+  c.before { allow($stdout).to receive(:write) } # silencing stdout to avoid noise in the spec results
+end

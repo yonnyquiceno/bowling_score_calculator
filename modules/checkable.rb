@@ -20,6 +20,6 @@ module Checkable
   end
 
   def last_frame?(frame)
-    frame == 9 # since count begins in 0 last frame would be 9
+    frame == 10
   end
 end

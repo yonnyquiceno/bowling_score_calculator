@@ -2,11 +2,10 @@
 class ScoreBoard
   include Printable
   include Validatable
-  include Checkable
-  include ScoreboardUtilities
 
   def initialize(filename)
     @raw_throwings = FileReader.new(filename).read_file
+    @frame_recorder = FrameRecorder.new
   end
 
   def game_score
@@ -37,15 +36,14 @@ class ScoreBoard
   end
 
   def player_scoreboard(player_throwings)
-    reset_scoreboard
+    @frame_recorder.reset
     player_throwings.each_with_index do |throwing, i|
-      break if @frame == 10
-      if @skip_next then @skip_next = false; next end
-      @next_throwing, @after_next_throwing = player_throwings[(i + 1)..(i + 2)].map(&:to_i)
-      record_frame(throwing)
-      @frame = @score_keeper.size
+      break if @frame_recorder.frame_count == 10
+      if @frame_recorder.skip_next then @frame_recorder.skip_next = false; next end
+      next_throwing, after_next_throwing = player_throwings[(i + 1)..(i + 2)].map(&:to_i)
+      @frame_recorder.record(throwing, next_throwing, after_next_throwing)
     end
-    validate_frame_count(@frame) #check if both users have completed all 10 game frames
-    [@pinfalls_keeper, @score_keeper]
+    validate_frame_count(@frame_recorder.frame_count) #check if user have completed all 10 game frames
+    [@frame_recorder.pinfalls_keeper, @frame_recorder.score_keeper]
   end
 end

@@ -90,12 +90,12 @@ describe Checkable do
   end
 
   describe "#last_frame?" do
-    context 'when frame is equal to 9' do
+    context 'when frame is equal to 10' do
       it 'should return true' do
-        expect(dummy_class.send(:last_frame?, 9)).to be true
+        expect(dummy_class.send(:last_frame?, 10)).to be true
       end
     end
-    context 'when frame is not equal to 9' do
+    context 'when frame is not equal to 10' do
       it 'should return false' do
         expect(dummy_class.send(:last_frame?, 2)).to be false
       end
