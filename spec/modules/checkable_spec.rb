@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Checkable do
@@ -7,7 +9,7 @@ describe Checkable do
     end
   end
 
-  describe "#strike?" do
+  describe '#strike?' do
     context 'when throwing is equal to 10' do
       it 'should return true' do
         expect(dummy_class.send(:strike?, 10)).to be true
@@ -29,7 +31,7 @@ describe Checkable do
     end
   end
 
-  describe "#spare?" do
+  describe '#spare?' do
     context 'when the throwing and next throwing points add up 10' do
       it 'should return true' do
         expect(dummy_class.send(:spare?, 3, 7)).to be true
@@ -51,7 +53,7 @@ describe Checkable do
     end
   end
 
-  describe "#foul?" do
+  describe '#foul?' do
     context 'when the throwing is a foul' do
       it 'should return true' do
         expect(dummy_class.send(:foul?, 'F')).to be true
@@ -70,7 +72,7 @@ describe Checkable do
     end
   end
 
-  describe "#regular_frame?" do
+  describe '#regular_frame?' do
     context 'when the throwing and next throwing points add up less than 10' do
       it 'should return true' do
         expect(dummy_class.send(:regular_frame?, 2, 3)).to be true
@@ -89,7 +91,7 @@ describe Checkable do
     end
   end
 
-  describe "#last_frame?" do
+  describe '#last_frame?' do
     context 'when frame is equal to 10' do
       it 'should return true' do
         expect(dummy_class.send(:last_frame?, 10)).to be true

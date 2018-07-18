@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This module provides methods to print out results to STDOUT
 module Printable
   private

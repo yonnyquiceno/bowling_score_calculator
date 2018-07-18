@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This module contains the methods that performs validations over the input data
 module Validatable
   private
@@ -16,28 +18,26 @@ module Validatable
   def validate_score(score)
     @errors ||= []
     @errors << I18n.t('errors.invalid_char', score: score) unless valid_chars?(score)
-    @errors << I18n.t('errors.no_negative_values') if score.to_i < 0
+    @errors << I18n.t('errors.no_negative_values') if score.to_i.negative?
     @errors << I18n.t('errors.should_not_be_major_than_10') if score.to_i > 10
     @errors
   end
 
   def validate_frame_sum(throw1, throw2)
+    return unless throw1.to_i + throw2.to_i > 10
     @errors ||= []
-    if throw1.to_i + throw2.to_i > 10
-      @errors << I18n.t('errors.should_not_be_major_than_10')
-      raise 'InputError'
-    end
+    @errors << I18n.t('errors.should_not_be_major_than_10')
+    raise 'InputError'
   end
 
   def validate_frame_count(frame_count)
+    return unless frame_count < 10
     @errors ||= []
-    if frame_count < 10
-      @errors << I18n.t('errors.game_incomplete')
-      raise 'InputError'
-    end
+    @errors << I18n.t('errors.game_incomplete')
+    raise 'InputError'
   end
 
   def valid_chars?(score)
-    !!(score.to_s =~ /^(-{0,1}\d+|F)$/) # Regexp to match 
+    !(score.to_s =~ /^(-{0,1}\d+|F)$/).nil?
   end
 end
