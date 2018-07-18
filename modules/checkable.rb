@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This module provides simple checking methods
 module Checkable
   private
@@ -16,7 +18,7 @@ module Checkable
 
   def regular_frame?(throwing, next_throwing)
     throwings_sum = throwing.to_i + next_throwing.to_i
-    !foul?(throwing) && throwings_sum < 10 && throwings_sum > 0
+    !foul?(throwing) && throwings_sum < 10 && throwings_sum.positive?
   end
 
   def last_frame?(frame)

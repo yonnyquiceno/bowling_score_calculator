@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This class is in charge of recording game frames one by one
 class FrameRecorder
   attr_accessor :skip_next, :score_keeper, :pinfalls_keeper
@@ -33,10 +35,10 @@ class FrameRecorder
 
   def add_strike
     add_score(10 + @next_throwing + @after_next_throwing)
-    add_pinfalls('X', @next_throwing, @after_next_throwing) and return if last_frame?(frame_count)
+    add_pinfalls('X', @next_throwing, @after_next_throwing) && return if last_frame?(frame_count)
     add_pinfalls(' ', 'X')
   end
-  
+
   def add_spare
     add_score(10 + @after_next_throwing)
     add_pinfalls(@throwing.to_s, '/')

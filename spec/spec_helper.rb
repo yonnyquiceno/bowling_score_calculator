@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../modules/validatable'
 require_relative '../modules/checkable'
 require_relative '../modules/printable'
