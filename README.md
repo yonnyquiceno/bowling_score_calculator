@@ -1,4 +1,4 @@
-# Bowling score calculator
+# Bowling scores calculator
 
 A simple Ruby command-line application to calculate the scores of bowling games
 
